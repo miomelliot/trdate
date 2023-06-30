@@ -13,3 +13,5 @@ C:\Users\Andrey\Documents\GitHub\C-DATE-TIME\obj\Debug\net7.0\refint\C-DATE-TIME
 C:\Users\Andrey\Documents\GitHub\C-DATE-TIME\obj\Debug\net7.0\C-DATE-TIME.pdb
 C:\Users\Andrey\Documents\GitHub\C-DATE-TIME\obj\Debug\net7.0\C-DATE-TIME.genruntimeconfig.cache
 C:\Users\Andrey\Documents\GitHub\C-DATE-TIME\obj\Debug\net7.0\ref\C-DATE-TIME.dll
+C:\Users\Andrey\Documents\GitHub\C-DATE-TIME\bin\Debug\net7.0\Hors.dll
+C:\Users\Andrey\Documents\GitHub\C-DATE-TIME\obj\Debug\net7.0\C-DATE-TIME.csproj.CopyComplete
