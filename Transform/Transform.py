@@ -55,7 +55,7 @@ class Transform() :
                     self.hour = list_array[i-1]
                     list_array[i-1] = f"{list_array[i-1]}HH"
                     return list_array
-            elif re.search(r"дня|вечер|ноч", list_array[i + 1]):
+            elif list_array[-1] != item and re.search(r"дня|вечер|ноч", list_array[i + 1]):
                 if int(list_array[i - 1]) in (9, 10, 11):
                     list_array[i - 1] = int(list_array[i - 1]) + 12
                 elif int(list_array[i - 1]) == 12:
