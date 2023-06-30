@@ -2,8 +2,8 @@ import re
 import datetime
 
 # YYYY-MM-DD HH24:MI:SS
-class Transform() :
-    def __init__(self) :
+class Transform():
+    def __init__(self):
         self.year = datetime.datetime.now().year
         self.month = datetime.datetime.now().month
         self.day = datetime.datetime.now().day
@@ -65,15 +65,15 @@ class Transform() :
                 return list_array
         
     
-    def get_date_list(self, list) :
+    def get_date_list(self, list):
         self.monthLinesTime(list)
         self.hourLines(list)
         date_string = f"{self.year}-{self.month}-{self.day} {self.hour}:{self.minute}:{self.second}"
         date_format = "%Y-%m-%d %H:%M:%S"
         print(datetime.datetime.strptime(date_string, date_format))
-    
-    
-    
+
+
+
 if __name__ == '__main__':
     t = Transform()
     t.get_date_list("Вчера в 13:44")
