@@ -43,7 +43,7 @@ class Transform():
                     list_array[i-1] = f"{list_array[i-1]}DD"
         return list_array
         
-        
+    # HH format
     def hourLines(self, list_raw):
         list_array = self.splitLines(list_raw)
         for i, item in enumerate(list_array):
@@ -64,6 +64,8 @@ class Transform():
                 self.hour = list_array[i-1]
                 list_array[i-1] = f"{list_array[i-1]}HH"
                 return list_array
+            elif re.search(r"пол", item, re.IGNORECASE):
+                
         
     
     def get_date_list(self, list):
