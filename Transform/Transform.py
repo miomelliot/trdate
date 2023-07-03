@@ -10,6 +10,7 @@ class Transform():
         self.hour = "00"
         self.minute = "00"
         self.second = "00"
+    
         
     def splitLines(self, lines):
         lines = re.sub(r":", " ", lines)
