@@ -106,7 +106,19 @@ class Transform():
         self.hourLines(list)
         date_string = f"{self.year}-{self.month}-{self.day} {self.hour}:{self.minute}:{self.second}"
         date_format = "%Y-%m-%d %H:%M:%S"
-        print(dt.datetime.strptime(date_string, date_format))
+        parsed_date = dt.datetime.strptime(date_string, date_format)
+
+        # Получение текущей даты
+        now = dt.datetime.now()
+
+        if flags is not None:
+            if "p" in flags and parsed_date > now:
+                parsed_date = now
+            elif "r" in flags and parsed_date.date() > now.date():
+                parsed_date = now
+        elif parsed_date > now:
+            print("Ошибка: указанная дата не может быть больше текущей даты без установленного флага.")
+            return
 
 
 if __name__ == '__main__':
