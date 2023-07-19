@@ -1,7 +1,7 @@
 import re
 import datetime as dt
 
-def yearLines(list_array):
+def yearLines(list_array, year=dt.datetime.now().year):
     """Находим год"""
     for i, item in enumerate(list_array):
         if re.search(r"^год$", item):
@@ -13,6 +13,12 @@ def yearLines(list_array):
             return list_array
         elif re.search(r"^20[0-9]{2}$", item, re.IGNORECASE):
             list_array[i] = f"{year}YY"
+            return list_array
+        elif re.search(r"^1000$", item, re.IGNORECASE) and i + 1 < len(list_array) and i - 1 >= 0:
+            year = f"{list_array[i-1]}{list_array[i+1]}YY"
+            list_array[i] = year
+            list_array[i-1] = f"{list_array[i-1]}YY"
+            list_array[i+1] = f"{list_array[i+1]}YY"
             return list_array
 
 def monthLines(list_array):
@@ -122,3 +128,8 @@ def get_d(year, month, day, hour, minute, second):
     date_format = "%Y-%m-%d %H:%M:%S"
     parsed_date = dt.datetime.strptime(date_string, date_format)
     return parsed_date
+
+if __name__ == "__main__":
+    lists = ['20', '1000', '23', '11', '24', '10']
+    y = yearLines(lists)
+    print(y)
