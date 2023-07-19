@@ -1,0 +1,3 @@
+[tool.poetry]
+name = "trdate"
+version = "1.0.0"
