@@ -1,8 +1,8 @@
 # Trdate
 
-Trdate is a utility library for working with dates and time in Python.
+Trdate is a library for converting date and time from natural language in the Russian language to Python.
 
-Trdate - библиотека для работы с датами и временем на языке Python.
+Trdate - библиотека для преобразования даты и времени из естественной речи русского языка Python.
 
 ## Installation / Установка
 
