@@ -1,4 +1,4 @@
-from trdate.code.utils import stringLines, splitLines
+from ..code.utils import stringLines, splitLines
 
 def test_stringLines():
     input_string = ["Hello", "world!"]
