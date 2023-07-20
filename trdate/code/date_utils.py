@@ -1,6 +1,5 @@
 import re
 import datetime as dt
-from typing import List, Union
 
 def yearLines(list_array, year=dt.datetime.now().year):
     """Находим год"""

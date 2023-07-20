@@ -1,10 +1,14 @@
 import re
 import datetime as dt
-from .utils import stringLines, splitLines
-from .date_utils import yearLines, monthLines, hourLines, get_d
 
 class TransFormDate():
-
+    
+    """
+    stringLines: `array` -> `json`
+    
+    splitLines: `lines` -> `array`:`str`
+    
+    """
     def __init__(self):
         self.year = dt.datetime.now().year
         self.month = dt.datetime.now().month
@@ -12,7 +16,7 @@ class TransFormDate():
         self.hour = "00"
         self.minute = "00"
         self.second = "00"
-        self.list_array = None
+        self.list_array = self.splitLines("сегодня")
 
     def __str__(self):
         return f"{self.list_array}"

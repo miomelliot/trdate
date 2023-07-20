@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "trdate"
-version = "1.0.1"
+version = "1.0.0"
 description = "A utility library for working with dates and time"
 authors = ["Ostrovsky Andrey Yuryevich <miomelliot@gmail.com>"]
 license = "MIT"
