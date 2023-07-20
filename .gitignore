@@ -4,3 +4,4 @@ __pycache__
 .poetry/
 __pypackages__/
 poetry.lock
+.vscode
