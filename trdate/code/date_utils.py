@@ -2,7 +2,7 @@ import re
 import datetime as dt
 from typing import List, Union
 
-def yearLines(list_array: List[Union[str, int]], year: int =dt.datetime.now().year) -> List[Union[str, int]]:
+def yearLines(list_array, year=dt.datetime.now().year):
     """Находим год"""
     for i, item in enumerate(list_array):
         if re.search(r"^год$", item):
@@ -22,7 +22,7 @@ def yearLines(list_array: List[Union[str, int]], year: int =dt.datetime.now().ye
             list_array[i+1] = f"{list_array[i+1]}YY"
             return list_array
 
-def monthLines(list_array: List[Union[str, int]]) -> List[Union[str, int]]:
+def monthLines(list_array):
     """Находим месяц и дату"""
     dict_month = {
         "января": "1",
@@ -64,7 +64,7 @@ def monthLines(list_array: List[Union[str, int]]) -> List[Union[str, int]]:
             return list_array
     return list_array
 
-def hourLines(list_array: List[Union[str, int]]) -> List[Union[str, int]]:
+def hourLines(list_array):
     for i, item in enumerate(list_array):
         if re.search(r"^час$", item):
             hour = list_array[i]
@@ -124,7 +124,7 @@ def hourLines(list_array: List[Union[str, int]]) -> List[Union[str, int]]:
                 list_array[i] = f"{list_array[i]}HH"
                 return list_array
 
-def get_d(year: int, month: int, day: int, hour: int, minute: int, second: int) -> dt.datetime:
+def get_d(year, month, day, hour, minute, second):
     date_string = f"{year}-{month}-{day} {hour}:{minute}:{second}"
     date_format = "%Y-%m-%d %H:%M:%S"
     parsed_date = dt.datetime.strptime(date_string, date_format)
