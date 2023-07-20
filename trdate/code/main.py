@@ -1,7 +1,7 @@
 import re
 import datetime as dt
-from utils import stringLines, splitLines
-from date_utils import yearLines, monthLines, hourLines, get_d
+from .utils import stringLines, splitLines
+from .date_utils import yearLines, monthLines, hourLines, get_d
 
 class TransFormDate():
 

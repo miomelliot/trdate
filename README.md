@@ -23,7 +23,9 @@ Here's an example of how to use Trdate:
 ```python
 import trdate
 
-# Example code goes here
+ds = trdate.TransFormDate()
+ds.get_date_list("3 июля 23 год 23 59") # 2023-07-03 23:59:00
+print(ds) # ['3DD', '7MM', '23YY', '2023YY', '23HH', '59MI']
 
 ```
 

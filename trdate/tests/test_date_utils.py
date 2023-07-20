@@ -1,5 +1,5 @@
 import datetime as dt
-from code.date_utils import yearLines, monthLines, hourLines, get_d
+from trdate.code.date_utils import yearLines, monthLines, hourLines, get_d
 
 
 def test_year_lines():
