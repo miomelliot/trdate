@@ -6,3 +6,4 @@ __pypackages__/
 poetry.lock
 .vscode
 venv
+dist/
