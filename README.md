@@ -14,7 +14,6 @@ Use pip to install Trdate:
 pip install trdate
 ```
 
- 
 ## Usage / Использование
 
 Here's an example of how to use Trdate:
