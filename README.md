@@ -8,12 +8,13 @@ Trdate - библиотека для преобразования даты и в
 
 Use pip to install Trdate:
 
-Используйте pip для установки Trdate:
+Используйте pip для установки [Trdate](https://pypi.org/search/?q=trdate):
 
 ```python
 pip install trdate
 ```
 
+ 
 ## Usage / Использование
 
 Here's an example of how to use Trdate:
