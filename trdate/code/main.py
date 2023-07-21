@@ -33,14 +33,14 @@ class TransFormDate():
         Метод для получения списка дат из строки `line` и обработки их.
     """
 
-    def __init__(self):
+    def __init__(self, _str=f'{dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}'):
         self.year = dt.datetime.now().year
         self.month = dt.datetime.now().month
         self.day = dt.datetime.now().day
         self.hour = "00"
         self.minute = "00"
         self.second = "00"
-        self.list_array = self.splitLines("сегодня")
+        self.list_array = self.splitLines(_str)
 
     def __str__(self):
         return f"{self.list_array}"
@@ -107,7 +107,7 @@ class TransFormDate():
         Example
         -------
         >>> transform_date = TransFormDate()
-        >>> transform_date.list_array = ['элемент', 'год', '20', 'YY']
+        >>> transform_date.list_array = ["20", "1000", "23", "год"]
         >>> result = transform_date.yearLines()
         >>> print(result)
         ['элемент', '2020YY', '20YY']
@@ -160,12 +160,12 @@ class TransFormDate():
         for i, item in enumerate(self.list_array):
             for regex_pattern, month_num in dict_month.items():
                 if re.search(regex_pattern, item, re.IGNORECASE):
-                    self.list_array[i] = f"{month_num:02d}MM"
+                    self.list_array[i] = f"{month_num}MM"
                     self.month = month_num
-                    if i != 0 and re.search(r"\d|\d\d", self.list_array[i-1]):
+                    if i != 0 and re.search(r"^\d{1}$|^\d{2}$", self.list_array[i-1]):
                         self.day = self.list_array[i-1]
                         self.list_array[i-1] = f"{self.list_array[i-1]}DD"
-                    elif len(self.list_array) > i + 1 and re.search(r"\d|\d\d", self.list_array[i+1]):
+                    elif len(self.list_array) > i + 1 and re.search(r"^\d{1}$|^\d{2}$", self.list_array[i+1]):
                         self.day = self.list_array[i+1]
                         self.list_array[i+1] = f"{self.list_array[i+1]}DD"
                     return self.stringLines(self.list_array)
@@ -173,7 +173,7 @@ class TransFormDate():
                 yesterday = dt.datetime.now() - dt.timedelta(days=1)
                 month_date = yesterday.strftime("%m")
                 day_date = yesterday.strftime("%d")
-                self.list_array[i] = f"{month_date}MM {day_date:02d}DD"
+                self.list_array[i] = f"{month_date}MM {day_date}DD"
                 self.month = month_date
                 self.day = day_date
                 return self.list_array
@@ -181,9 +181,13 @@ class TransFormDate():
                 day_before_yesterday = dt.datetime.now() - dt.timedelta(days=2)
                 month_date = day_before_yesterday.strftime("%m")
                 day_date = day_before_yesterday.strftime("%d")
-                self.list_array[i] = f"{month_date}MM {day_date:02d}DD"
+                self.list_array[i] = f"{month_date}MM {day_date}DD"
                 self.month = month_date
                 self.day = day_date
+                return self.list_array
+            elif re.search(r"^числ", item, re.IGNORECASE):
+                self.list_array[i-1] = f"{self.list_array[i-1]}DD"
+                self.day = self.list_array[i-1]
                 return self.list_array
         return self.list_array
 
@@ -258,16 +262,17 @@ class TransFormDate():
                     self.list_array[i+1] = f"{self.list_array[i+1]}HH"
                     return self.list_array
             elif re.search(r"^(0?[1-9]|1[0-9]|2[0-3])$", item, re.IGNORECASE):
-                if len(self.list_array) > i + 2 and re.search(r"^\d{2}$", self.list_array[i + 1], re.IGNORECASE):
+                if len(self.list_array) > i + 2 and re.search(r"^\d{1}$|^\d{2}$", self.list_array[i + 1], re.IGNORECASE):
                     self.hour = self.list_array[i]
                     self.list_array[i] = f"{self.list_array[i]}HH"
                     self.minute = self.list_array[i+1]
                     self.list_array[i+1] = f"{self.list_array[i+1]}MI"
                     return self.list_array
-                elif len(self.list_array) > i+1 and re.search(r"^минут", self.list_array[i+1], re.IGNORECASE) == None:
+                elif len(self.list_array) > i+1 and re.search(r"^минут", self.list_array[i+1], re.IGNORECASE) == None and self.list_array[i+1] != '1000':
                     self.hour = self.list_array[i]
                     self.list_array[i] = f"{self.list_array[i]}HH"
                     return self.list_array
+        return self.list_array
 
     def minuteLines(self):
         """
@@ -307,7 +312,7 @@ class TransFormDate():
         parsed_date = dt.datetime.strptime(date_string, date_format)
         return parsed_date
 
-    def get_date_list(self, line):
+    def get_date_list(self, line="2021 января 1 1 1"):
         """
         Метод для получения списка дат из строки `line` и обработки их.
 
@@ -348,5 +353,5 @@ class TransFormDate():
 
 if __name__ == '__main__':
     ds = TransFormDate()
-    ds.get_date_list("2023 год июль 21")
+    ds.get_date_list("20 1000 23 год 3 июля 23 59")
     print(ds)
